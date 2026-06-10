@@ -2,6 +2,7 @@ package net.hackyourfuture.backend.week6.postify.controller;
 
 
 import net.hackyourfuture.backend.week6.postify.dto.UserStatsResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import net.hackyourfuture.backend.week6.postify.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +24,9 @@ public class UserController {
     public ResponseEntity<?> getUserStatsById(@PathVariable Long id) {
         UserStatsResponse stats = userRepository.getUserStatsById(id);
 
-        if (stats != null) {
-            return ResponseEntity.ok(stats);
-        }
+        return stats != null ? ResponseEntity.ok(stats)
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
 
-        return ResponseEntity.notFound().build();
     }
 
 

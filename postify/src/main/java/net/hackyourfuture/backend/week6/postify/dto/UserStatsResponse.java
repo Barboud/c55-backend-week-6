@@ -10,5 +10,10 @@ import lombok.Getter;
 public class UserStatsResponse {
     private final Long userId;
     private final String userName;
-
+    private final String userCountry;
+    private final Long totalStreams;
+    private final Long uniqueTracksStreamed;
+    private final Long uniqueArtistsStreamed;
+    private final String favoriteGenre;
+    private final Long totalListeningTimeSeconds;
 }
